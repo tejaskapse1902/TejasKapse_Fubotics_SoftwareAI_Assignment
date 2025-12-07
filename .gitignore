@@ -1,0 +1,28 @@
+fubotics-backend/.env
+fubotics-backend/serviceAccountKey.json
+fubotics-backend//node_modules/
+fubotics-backend//dist
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+fubotics-frontend/node_modules/
+fubotics-frontend/.pnp
+fubotics-frontend/.pnp.js
+fubotics-frontend/.env
+# testing
+fubotics-frontend/coverage/
+
+# production
+fubotics-frontend/build/
+
+# misc
+fubotics-frontend/.DS_Store
+fubotics-frontend/.env.local
+fubotics-frontend.env.development.local
+fubotics-frontend/.env.test.local
+fubotics-frontend/.env.production.local
+
+fubotics-frontend/npm-debug.log*
+fubotics-frontend/yarn-debug.log*
+fubotics-frontend/yarn-error.log*

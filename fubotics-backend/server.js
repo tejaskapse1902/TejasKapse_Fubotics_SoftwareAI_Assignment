@@ -4,6 +4,10 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const admin = require("firebase-admin");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const path = require("path");
+
+
+let serviceAccount;
 
 dotenv.config();
 
@@ -12,7 +16,16 @@ app.use(cors());
 app.use(express.json());
 
 // --- Firebase Admin (Firestore) ---
-const serviceAccount = require("./serviceAccountKey.json");
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+  console.log("Using FIREBASE_SERVICE_ACCOUNT from environment.");
+  serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+}
+else {
+  console.log("Using local serviceAccountKey.json file.");
+  const serviceAccountPath = path.join(__dirname, "..", "serviceAccountKey.json");
+  serviceAccount = require(serviceAccountPath);
+}
+
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
